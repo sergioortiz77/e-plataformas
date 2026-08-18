@@ -22,11 +22,11 @@ export default function Contact() {
   const getWhatsAppUrl = () => {
     const text =
       `*Nueva Solicitud de Diagnóstico - ePlataformas*\n\n` +
-      `👤 *Nombre:* ${formData.name}\n` +
-      `✉️ *Correo:* ${formData.email}\n` +
-      `📌 *Tipo de proyecto:* ${formData.projectType}\n` +
+      `*Nombre:* ${formData.name}\n` +
+      `*Correo:* ${formData.email}\n` +
+      `*Tipo de proyecto:* ${formData.projectType}\n` +
       (formData.message.trim()
-        ? `💬 *Detalles:* ${formData.message.trim()}\n`
+        ? `*Detalles:* ${formData.message.trim()}\n`
         : "");
 
     return `https://wa.me/529858584125?text=${encodeURIComponent(text)}`;
