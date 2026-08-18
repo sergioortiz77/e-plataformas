@@ -3,19 +3,23 @@
 import React, { useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 
+import Image from "next/image";
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2.5 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center font-bold text-xl text-white shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
-            eP
-          </div>
-          <span className="text-xl font-bold tracking-tight text-white">
-            ePlataformas<span className="text-blue-500">.</span>
-          </span>
+        <a href="#" className="flex items-center group">
+          <Image
+            src="/logo.png"
+            alt="ePlataformas Logo"
+            width={220}
+            height={40}
+            className="h-10 w-auto object-contain group-hover:scale-105 transition-transform"
+            priority
+          />
         </a>
 
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">

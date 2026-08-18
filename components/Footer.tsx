@@ -1,16 +1,18 @@
 import React from "react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
     <footer className="py-12 border-t border-slate-800 text-center text-xs text-slate-500 bg-slate-950">
       <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-sm text-white">
-            eP
-          </div>
-          <span className="font-semibold text-slate-300 text-sm">
-            ePlataformas
-          </span>
+        <div className="flex items-center gap-3">
+          <Image
+            src="/logo.png"
+            alt="ePlataformas Logo"
+            width={160}
+            height={30}
+            className="h-7 w-auto object-contain"
+          />
           <span className="text-slate-600">|</span>
           <p>© {new Date().getFullYear()} ePlataformas. Todos los derechos reservados.</p>
         </div>
