@@ -1,0 +1,42 @@
+name: Deploy eplataformas.com al VPS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, vps-eplataformas]
+    steps:
+      - uses: actions/checkout@v4
+
+      # `npm ci` y no `npm install`: el lockfile manda, para que el sitio que se
+      # publica sea el que se probó y no el que resuelva npm ese día.
+      - name: Instalar dependencias
+        run: npm ci
+
+      # `output: 'export'` (next.config.mjs) hace que `next build` deje el sitio
+      # entero en `out/`. No hay `next start` ni proceso que reiniciar.
+      - name: Compilar sitio estático
+        run: npm run build
+
+      # Control positivo ANTES de tocar producción: si el build no dejó un
+      # index.html, el rsync con --delete vaciaría el sitio en vivo.
+      - name: Comprobar que el build produjo algo
+        run: |
+          test -s out/index.html || { echo "ERROR: out/index.html no existe o está vacío"; exit 1; }
+          echo "build OK — $(find out -type f | wc -l) archivos"
+
+      - name: Sincronizar a /var/www/eplataformas
+        run: |
+          rsync -rlDzvc --delete --chown=www-data:www-data \
+            out/ /var/www/eplataformas/
+
+      - name: Verificar por la URL pública
+        run: |
+          # Por la URL que pide el navegador, no por la ruta del archivo:
+          # un archivo correcto en disco no prueba que Apache lo sirva.
+          curl -sf -o /dev/null -w 'eplataformas.com -> %{http_code}\n' \
+            --resolve 'eplataformas.com:80:127.0.0.1' http://eplataformas.com/
+          echo "Deploy OK: $(date -u +%FT%TZ)"
