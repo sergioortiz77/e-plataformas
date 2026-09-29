@@ -9,7 +9,7 @@ jobs:
   deploy:
     runs-on: [self-hosted, vps-eplataformas]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # `npm ci` y no `npm install`: el lockfile manda, para que el sitio que se
       # publica sea el que se probó y no el que resuelva npm ese día.
