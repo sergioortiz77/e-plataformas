@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "ePlataformas | Ecosistemas e-Learning y Membresías a Medida",
-  description: "Desarrollamos e implementamos plataformas de capacitación digital corporativa, cursos en línea y sitios de membresía de alto rendimiento.",
+  description: "Desarrollamos e implementamos plataformas de capacitación digital corporativa, cursos en línea y sitios de membresía, con sistemas automatizados e inteligencia artificial.",
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",

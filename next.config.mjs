@@ -13,6 +13,11 @@ const nextConfig = {
   // `next/image` optimiza en el servidor, y aquí no hay servidor. Son dos
   // imágenes (logo e icono), así que se sirven tal cual.
   images: { unoptimized: true },
+
+  // Cada página sale como carpeta/index.html (p. ej. `out/recomienda/index.html`),
+  // que Apache sirve en /recomienda/ sin reglas extra. Sin esto saldría
+  // `recomienda.html` y /recomienda daría 404.
+  trailingSlash: true,
 };
 
 export default nextConfig;

@@ -26,6 +26,9 @@ jobs:
       - name: Comprobar que el build produjo algo
         run: |
           test -s out/index.html || { echo "ERROR: out/index.html no existe o está vacío"; exit 1; }
+          # La página de reglas del programa de recomendación se comparte por enlace: si deja
+          # de generarse (p. ej. se pierde `trailingSlash`), los enlaces ya enviados darían 404.
+          test -s out/recomienda/index.html || { echo "ERROR: falta out/recomienda/index.html"; exit 1; }
           echo "build OK — $(find out -type f | wc -l) archivos"
 
       - name: Sincronizar a /var/www/eplataformas
@@ -44,7 +47,11 @@ jobs:
           ESPERADO=$(sha256sum out/index.html | cut -c1-64)
           for i in $(seq 1 30); do
             if [ "$(curl -sf -m 10 https://eplataformas.com/ | sha256sum | cut -c1-64)" = "$ESPERADO" ]; then
-              echo "✓ eplataformas.com sirve, por su DNS público, el index.html de este commit"; exit 0
+              echo "✓ eplataformas.com sirve, por su DNS público, el index.html de este commit"
+              if curl -sf -m 10 https://eplataformas.com/recomienda/ | grep -q "Programa de recomendación"; then
+                echo "✓ /recomienda/ responde con su contenido"; exit 0
+              fi
+              echo "✗ /recomienda/ no responde con la página de reglas"; exit 1
             fi
             sleep 2
           done

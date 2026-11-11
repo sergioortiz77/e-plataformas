@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="max-w-5xl mx-auto px-6 text-center">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-medium mb-8">
           <Sparkles className="w-3.5 h-3.5 text-blue-400 animate-pulse" />
-          <span>Ecosistemas e-Learning y Membresías Digitales</span>
+          <span>e-Learning, Membresías e IA</span>
         </div>
 
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
@@ -23,7 +23,7 @@ export default function Hero() {
         </h1>
 
         <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Diseñamos e implementamos academias digitales a la medida: capacitación corporativa de alto impacto, monetización con cobros automáticos y contenido interactivo sin fricciones técnicas.
+          Diseñamos e implementamos academias digitales a la medida: capacitación corporativa de alto impacto, monetización con cobros automáticos, contenido interactivo y sistemas automatizados con inteligencia artificial.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

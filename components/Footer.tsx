@@ -17,10 +17,10 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} ePlataformas. Todos los derechos reservados.</p>
         </div>
         <div className="flex gap-6 text-slate-400">
-          <a href="#soluciones" className="hover:text-white transition-colors">Soluciones</a>
-          <a href="#beneficios" className="hover:text-white transition-colors">Beneficios</a>
-          <a href="#integraciones" className="hover:text-white transition-colors">Integraciones</a>
-          <a href="#contacto" className="hover:text-white transition-colors">Contacto</a>
+          <a href="/#soluciones" className="hover:text-white transition-colors">Soluciones</a>
+          <a href="/#beneficios" className="hover:text-white transition-colors">Beneficios</a>
+          <a href="/#integraciones" className="hover:text-white transition-colors">Integraciones</a>
+          <a href="/#contacto" className="hover:text-white transition-colors">Contacto</a>
         </div>
       </div>
     </footer>

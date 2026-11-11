@@ -1,5 +1,5 @@
 import React from "react";
-import { Building2, Users, Video, CreditCard, CheckCircle2 } from "lucide-react";
+import { Building2, Users, Video, Bot, CheckCircle2 } from "lucide-react";
 
 export default function Solutions() {
   const solutions = [
@@ -35,6 +35,17 @@ export default function Solutions() {
         "Animaciones, whiteboards y diseño interactivo",
         "Diseñado para máxima retención del estudiante"
       ]
+    },
+    {
+      title: "Automatización e Inteligencia Artificial",
+      description: "Integramos asistentes de IA y procesos automáticos para que tu plataforma trabaje sola en lo repetitivo y tu equipo se dedique a lo importante.",
+      icon: Bot,
+      color: "teal",
+      features: [
+        "Asistentes de IA que responden con base en tu propio contenido",
+        "Avisos automáticos por WhatsApp y correo",
+        "Revisión y clasificación asistida de solicitudes"
+      ]
     }
   ];
 
@@ -48,7 +59,7 @@ export default function Solutions() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {solutions.map((item, idx) => {
             const Icon = item.icon;
             return (

@@ -1,7 +1,30 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CheckCircle2, MessageSquare } from "lucide-react";
+
+// Código de quien recomendó (programa de recomendación, ver /recomienda/).
+// Llega en el enlace como ?ref=ANA20 y se guarda en este navegador por si la
+// persona vuelve días después sin el enlace. El código viaja en el texto de
+// WhatsApp: es lo que Sergio ve, y lo que se anota en el contrato del cliente.
+const REF_KEY = "eplataformas_ref";
+const REF_DIAS = 90;
+
+function limpiarCodigo(v: string): string {
+  return v.toUpperCase().replace(/[^A-Z0-9-]/g, "").slice(0, 20);
+}
+
+function leerRefGuardado(): string {
+  try {
+    const raw = window.localStorage.getItem(REF_KEY);
+    if (!raw) return "";
+    const { code, at } = JSON.parse(raw) as { code: string; at: number };
+    if (Date.now() - at > REF_DIAS * 86400000) return "";
+    return limpiarCodigo(code || "");
+  } catch {
+    return "";
+  }
+}
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -10,7 +33,21 @@ export default function Contact() {
     email: "",
     projectType: "Capacitación para Empresa (LMS)",
     message: "",
+    referral: "",
   });
+
+  useEffect(() => {
+    const desdeEnlace = limpiarCodigo(new URLSearchParams(window.location.search).get("ref") || "");
+    if (desdeEnlace) {
+      try {
+        window.localStorage.setItem(REF_KEY, JSON.stringify({ code: desdeEnlace, at: Date.now() }));
+      } catch {
+        // Sin almacenamiento (ventana privada): el código sigue valiendo en esta visita.
+      }
+    }
+    const code = desdeEnlace || leerRefGuardado();
+    if (code) setFormData((prev) => (prev.referral ? prev : { ...prev, referral: code }));
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -27,6 +64,9 @@ export default function Contact() {
       `*Tipo de proyecto:* ${formData.projectType}\n` +
       (formData.message.trim()
         ? `*Detalles:* ${formData.message.trim()}\n`
+        : "") +
+      (formData.referral.trim()
+        ? `*Me recomendó:* ${formData.referral.trim()}\n`
         : "");
 
     return `https://wa.me/529858584125?text=${encodeURIComponent(text)}`;
@@ -104,6 +144,7 @@ export default function Contact() {
                 <option value="Capacitación para Empresa (LMS)">Capacitación para Empresa (LMS)</option>
                 <option value="Academia / Sitio de Membresía">Academia / Sitio de Membresía</option>
                 <option value="Digitalización de Cursos y Multimedia">Digitalización de Cursos y Multimedia</option>
+                <option value="Automatización e Inteligencia Artificial">Automatización e Inteligencia Artificial</option>
                 <option value="Consultoría y Diagnóstico">Consultoría y Diagnóstico</option>
                 <option value="Otro">Otro</option>
               </select>
@@ -117,6 +158,18 @@ export default function Contact() {
                 rows={3}
                 placeholder="Cuéntanos un poco sobre tu audiencia, volumen de alumnos o necesidades específicas..."
                 className="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 text-sm resize-none"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-slate-400 mb-1">¿Alguien te recomendó? (opcional)</label>
+              <input
+                type="text"
+                name="referral"
+                value={formData.referral}
+                onChange={handleChange}
+                maxLength={60}
+                placeholder="Su nombre o su código"
+                className="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 text-sm"
               />
             </div>
             <button

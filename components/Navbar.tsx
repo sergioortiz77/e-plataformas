@@ -26,7 +26,7 @@ export default function Navbar() {
           <a href="#soluciones" className="hover:text-blue-400 transition-colors">Soluciones</a>
           <a href="#beneficios" className="hover:text-blue-400 transition-colors">Beneficios</a>
           <a href="#integraciones" className="hover:text-blue-400 transition-colors">Integraciones</a>
-          <a href="#testimonios" className="hover:text-blue-400 transition-colors">Casos de Éxito</a>
+          <a href="#casos" className="hover:text-blue-400 transition-colors">Casos de Éxito</a>
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
@@ -54,7 +54,7 @@ export default function Navbar() {
           <a href="#soluciones" onClick={() => setMenuOpen(false)} className="block text-slate-300 hover:text-blue-400 py-1">Soluciones</a>
           <a href="#beneficios" onClick={() => setMenuOpen(false)} className="block text-slate-300 hover:text-blue-400 py-1">Beneficios</a>
           <a href="#integraciones" onClick={() => setMenuOpen(false)} className="block text-slate-300 hover:text-blue-400 py-1">Integraciones</a>
-          <a href="#testimonios" onClick={() => setMenuOpen(false)} className="block text-slate-300 hover:text-blue-400 py-1">Casos de Éxito</a>
+          <a href="#casos" onClick={() => setMenuOpen(false)} className="block text-slate-300 hover:text-blue-400 py-1">Casos de Éxito</a>
           <a
             href="#contacto"
             onClick={() => setMenuOpen(false)}

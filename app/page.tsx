@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import Solutions from "@/components/Solutions";
 import Benefits from "@/components/Benefits";
 import Integrations from "@/components/Integrations";
+import Cases from "@/components/Cases";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -16,6 +17,7 @@ export default function HomePage() {
       <Solutions />
       <Benefits />
       <Integrations />
+      <Cases />
       <Testimonials />
       <Contact />
       <Footer />
