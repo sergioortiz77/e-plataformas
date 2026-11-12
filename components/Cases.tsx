@@ -48,6 +48,34 @@ const cases = [
     ai: false,
   },
   {
+    name: "Temazcal",
+    kind: "Sitio de servicios especializados",
+    url: "https://temazcal.com/",
+    description:
+      "Sitio de construcción, consultoría y capacitación en temazcales tradicionales, con una trayectoria de más de 15 años en la práctica.",
+    features: [
+      "Servicios de construcción y consultoría explicados paso a paso",
+      "Página de cursos de capacitación",
+      "Galería de proyectos y contacto directo",
+      "Administrable en WordPress",
+    ],
+    ai: false,
+  },
+  {
+    name: "Dana Arabel",
+    kind: "Sitio bilingüe para eventos y ceremonias",
+    url: "https://www.danarabel.com/",
+    description:
+      "Sitio en español y en inglés para la creación de eventos culturales, artísticos, corporativos y turísticos, y para ceremonias tradicionales.",
+    features: [
+      "Versión completa en español y en inglés",
+      "Un apartado para cada tipo de servicio",
+      "Galería y formulario de contacto",
+      "Administrable en WordPress",
+    ],
+    ai: false,
+  },
+  {
     name: "Mayan Tours Ek Balam",
     kind: "Sitio para un guía de turismo",
     url: "https://toursekbalam.com/",
