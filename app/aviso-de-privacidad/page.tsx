@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 const RESPONSABLE = "Corporativo para el Desarrollo del Potencial Humano Mexicano S.A. de C.V.";
 const CORREO = "sergio@eplataformas.com";
-const ACTUALIZACION = "11 de noviembre de 2026";
+const ACTUALIZACION = "12 de noviembre de 2026";
 
 function H2({ children }: { children: React.ReactNode }) {
   return <h2 className="text-lg font-bold text-white mt-10 mb-3">{children}</h2>;
@@ -37,7 +37,7 @@ const proveedores = [
   ["WhatsApp (Meta)", "Entrega los mensajes que nos escribimos, incluido el que arma el formulario de este sitio."],
   ["Hostinger", "El servidor donde vive este sitio y se guarda el registro técnico de visitas."],
   ["Cloudflare", `Recibe los correos que nos escribes a ${CORREO} y los entrega en nuestro buzón.`],
-  ["Google", "El buzón de correo y los documentos de propuestas y contratos."],
+  ["Google", "El buzón de correo, el formulario de diagnóstico con sus respuestas, y los documentos de propuestas y contratos."],
 ];
 
 export default function AvisoPage() {
