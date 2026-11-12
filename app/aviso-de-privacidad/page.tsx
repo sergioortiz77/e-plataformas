@@ -5,8 +5,8 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import Footer from "@/components/Footer";
 
-// Aviso de privacidad de ePlataformas (11-nov-2026). Responsable y domicilio,
-// los mismos del aviso de mxwithme.com, por indicación de Sergio. La forma sigue
+// Aviso de privacidad de ePlataformas (11-nov-2026). Responsable, el mismo del
+// aviso de mxwithme.com; domicilio, la oficina de Tepoztlán (indicación de Sergio). La forma sigue
 // la del aviso de recordarsonriendo.com (corto, cada proveedor con lo que recibe).
 // Si el sitio empieza a guardar algo en el servidor (un formulario que escriba en
 // una base, analítica, cookies), este aviso se actualiza en el MISMO cambio.
@@ -66,7 +66,7 @@ export default function AvisoPage() {
 
           <H2>Quién es responsable de tus datos</H2>
           <p>
-            ePlataformas es una marca de {RESPONSABLE}, con domicilio en la Ciudad de México, responsable del
+            ePlataformas es una marca de {RESPONSABLE}, con domicilio en Texoco 2, Col. Los Ocotes, Tepoztlán, Morelos, C.P. 62520, México, responsable del
             tratamiento de tus datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión
             de los Particulares, publicada en el Diario Oficial de la Federación el 20 de marzo de 2025.
           </p>
