@@ -179,6 +179,10 @@ export default function Contact() {
               <MessageSquare className="w-4 h-4" />
               Enviar Solicitud por WhatsApp
             </button>
+            <p className="text-xs text-slate-500 text-center">
+              Usamos estos datos solo para responder tu solicitud. Más detalles en nuestro{" "}
+              <a href="/aviso-de-privacidad/" className="underline hover:text-slate-300">aviso de privacidad</a>.
+            </p>
           </form>
         )}
       </div>

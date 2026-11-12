@@ -29,6 +29,7 @@ jobs:
           # La página de reglas del programa de recomendación se comparte por enlace: si deja
           # de generarse (p. ej. se pierde `trailingSlash`), los enlaces ya enviados darían 404.
           test -s out/recomienda/index.html || { echo "ERROR: falta out/recomienda/index.html"; exit 1; }
+          test -s out/aviso-de-privacidad/index.html || { echo "ERROR: falta out/aviso-de-privacidad/index.html"; exit 1; }
           echo "build OK — $(find out -type f | wc -l) archivos"
 
       - name: Sincronizar a /var/www/eplataformas
@@ -48,10 +49,11 @@ jobs:
           for i in $(seq 1 30); do
             if [ "$(curl -sf -m 10 https://eplataformas.com/ | sha256sum | cut -c1-64)" = "$ESPERADO" ]; then
               echo "✓ eplataformas.com sirve, por su DNS público, el index.html de este commit"
-              if curl -sf -m 10 https://eplataformas.com/recomienda/ | grep -q "Programa de recomendación"; then
-                echo "✓ /recomienda/ responde con su contenido"; exit 0
+              if curl -sf -m 10 https://eplataformas.com/recomienda/ | grep -q "Programa de recomendación" \
+                 && curl -sf -m 10 https://eplataformas.com/aviso-de-privacidad/ | grep -q "derechos ARCO"; then
+                echo "✓ /recomienda/ y /aviso-de-privacidad/ responden con su contenido"; exit 0
               fi
-              echo "✗ /recomienda/ no responde con la página de reglas"; exit 1
+              echo "✗ /recomienda/ o /aviso-de-privacidad/ no responden con su contenido"; exit 1
             fi
             sleep 2
           done
